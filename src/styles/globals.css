@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    /* Primary Colors */
+    --color-bg-primary: theme("backgroundColor.body-primary");
+    --color-bg-secondary: theme("backgroundColor.body-secondary");
+    --color-bg-tertiary: theme("backgroundColor.body-tertiary");
+
+    --color-text-primary: theme("colors.primary");
+    --color-text-secondary: theme("colors.secondary");
+
+    --color-border-primary: theme("borderColor.primary");
+    --color-border-primary-hover: theme("borderColor.primary_hover");
+
+    /* Button Colors */
+    --color-btn-bg-primary: theme("backgroundColor.btn-primary");
+}
+
+html,
+body {
+    min-height: 100%;
+    max-width: 100%;
+    height: auto;
+    width: auto;
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    background: var(--color-bg-primary);
+    color: var(--color-text-primary);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+}
