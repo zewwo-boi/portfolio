@@ -30,6 +30,7 @@ body {
     Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     background: var(--color-bg-primary);
     color: var(--color-text-primary);
+    scroll-behavior: smooth;
 }
 
 a {
