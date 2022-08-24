@@ -9,7 +9,11 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "@emotion/react": "^11.10.0",
+        "@emotion/styled": "^11.10.0",
         "@headlessui/react": "^1.6.5",
+        "@mui/icons-material": "^5.10.2",
+        "@mui/material": "^5.0.0",
         "@sentry/nextjs": "^7.2.0",
         "framer-motion": "^7.2.1",
         "gsap": "^3.10.4",
@@ -20,6 +24,9 @@
         "typescript": "^4.7.4"
     },
     "devDependencies": {
+        "@babel/core": "*",
+        "@emotion/babel-plugin": "^11.10.2",
+        "@svgr/webpack": "^6.3.1",
         "@types/node": "^18.0.0",
         "@types/react": "^18.0.14",
         "autoprefixer": "^10.4.7",

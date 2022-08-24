@@ -1,26 +1,30 @@
 {
-    "compilerOptions": {
-        "target": "es5",
-        "moduleResolution": "node",
-        "lib": ["dom", "dom.iterable", "esnext"],
-        "baseUrl": "src",
-        "paths": {
-            "@/components/*": ["./components/*"],
-            "@/pages/*": ["./pages/*"],
-            "@/styles/*": ["./styles/*"]
-        },
-        "allowJs": true,
-        "skipLibCheck": true,
-        "strict": false,
-        "forceConsistentCasingInFileNames": true,
-        "noEmit": true,
-        "incremental": true,
-        "esModuleInterop": true,
-        "module": "esnext",
-        "resolveJsonModule": true,
-        "isolatedModules": true,
-        "jsx": "preserve"
-    },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-    "exclude": ["node_modules"]
+	"compilerOptions": {
+		"target": "es5",
+		"moduleResolution": "node",
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"baseUrl": ".",
+		"paths": {
+			"@/components/*": ["src/components/*"],
+			"@/pages/*": ["src/pages/*"],
+			"@/styles/*": ["src/styles/*"],
+			"@/public/*": ["public/*"],
+		},
+		"types": ["@emotion/core"],
+		"allowJs": true,
+		"skipLibCheck": true,
+		"strict": false,
+		"jsx": "react-jsx",
+		"jsxImportSource": "@emotion/react",
+		"forceConsistentCasingInFileNames": true,
+		"noEmit": true,
+		"incremental": true,
+		"esModuleInterop": true,
+		"module": "esnext",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"jsx": "preserve"
+	},
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+	"exclude": ["node_modules"]
 }
