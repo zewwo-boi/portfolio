@@ -3,7 +3,7 @@ import Blob2 from "/public/images/blobs/2.svg";
 import Blob3 from "/public/images/blobs/3.svg";
 import { css } from "@emotion/react";
 import ArrowDownwardRounded from "@mui/icons-material/ArrowDownwardRounded";
-import { motion } from "framer-motion";
+import { AnimationOptions, motion } from "framer-motion";
 
 // TODO: Add animation to waving hand emoji
 
@@ -45,9 +45,15 @@ const scrollerIconMotion = {
 
 function Hero() {
     function smoothScroll() {
-        document.body.scrollTop = window.innerHeight;
-        document.documentElement.scrollTop = window.innerHeight;
+        document.body.scrollTop = window.innerHeight * 1.2;
+        document.documentElement.scrollTop = window.innerHeight * 1.2;
     }
+
+    const settings: AnimationOptions<any> = {
+        repeat: Infinity,
+        repeatType: "reverse",
+        ease: "easeInOut",
+    };
 
     return (
         <div css={hero}>
@@ -56,27 +62,39 @@ function Hero() {
                 transition={{ delay: 0.8, duration: 0.8 }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}>
-                <div css={blob} className="blob_1 -top-32 -left-72">
+                <motion.div
+                    css={blob}
+                    className="blob_1 -top-32 -left-72"
+                    transition={{ ...settings, duration: 8 }}
+                    animate={{ x: 10, y: 10, z: -13 }}>
                     <Blob1 />
-                </div>
-                <div css={blob} className="blob_2 -bottom-64 -left-24">
+                </motion.div>
+                <motion.div
+                    css={blob}
+                    className="blob_2 -bottom-64 -left-24"
+                    transition={{ ...settings, duration: 7 }}
+                    animate={{ x: -10, y: -15, z: 15 }}>
                     <Blob2 />
-                </div>
-                <div css={blob} className="blob_3 right-12">
+                </motion.div>
+                <motion.div
+                    css={blob}
+                    className="blob_3 -right-48 -top-44 md:right-[2vw] md:top-0"
+                    transition={{ ...settings, duration: 5 }}
+                    animate={{ x: 15, y: 10, z: -18 }}>
                     <Blob3 />
-                </div>
+                </motion.div>
             </motion.div>
-            <div className="introduction relative top-1/2 w-auto -translate-y-1/2">
+            <div className="introduction relative top-[40vh] w-auto sm:top-1/2 sm:-translate-y-1/2">
                 <p className="text-left">
                     <motion.span
-                        className="block text-4xl"
+                        className="block text-3xl sm:text-4xl"
                         transition={{ delay: 0.3, duration: 1, ease: "easeOut" }}
                         initial={{ y: "105%", opacity: 0 }}
                         animate={{ y: "0%", opacity: 1 }}>
                         <span>👋</span> <span>Hello! My name is Nathaniel.</span>
                     </motion.span>
                     <motion.span
-                        className="mt-20 block text-2xl"
+                        className="mt-16 block text-lg sm:mt-20 sm:text-2xl"
                         transition={{ delay: 0.7, duration: 1, ease: "easeOut" }}
                         initial={{ y: "-55%", opacity: 0 }}
                         animate={{ y: "-100%", opacity: 1 }}>
@@ -87,13 +105,13 @@ function Hero() {
             </div>
             <motion.div
                 css={scroller}
-                className="scroll-down h-16 w-36 text-neutral-300"
+                className="scroll-down h-16 w-36 select-none text-neutral-300"
                 transition={{ delay: 1.2, duration: 0.6, type: "spring", bounce: 0.6 }}
                 initial={{ y: "-55%", x: "-50%", opacity: 0 }}
                 animate={{ y: "0%", opacity: 1, cursor: "pointer" }}
                 whileHover="hover"
                 onClick={() => smoothScroll()}>
-                <motion.span variants={scrollerTextMotion}> Scroll down</motion.span>
+                <motion.span variants={scrollerTextMotion}>Scroll down</motion.span>
                 <motion.div variants={scrollerIconMotion}>
                     <ArrowDownwardRounded />
                 </motion.div>
