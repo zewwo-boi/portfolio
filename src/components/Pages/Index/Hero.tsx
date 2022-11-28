@@ -77,7 +77,7 @@ function Hero() {
                         <span>👋</span> <span>Hello! I go by the name of &quot;zewwo&quot;</span>
                     </motion.span>
                     <motion.span
-                        className="mt-20 block text-[4vw] sm:mt-12 sm:text-lg md:mt-12 md:text-2xl"
+                        className="mt-16 block text-[4vw] sm:mt-12 sm:text-lg md:mt-12 md:text-2xl"
                         transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
                         initial={{ y: "-20%", opacity: 0 }}
                         animate={{ y: "-100%", opacity: 1 }}>
