@@ -87,7 +87,6 @@ function Hero() {
                         I am a self-taught web-developer located in Seoul.
                     </motion.span>
                 </p>
-                <div className="spacing"></div>
             </div>
         </div>
     );
