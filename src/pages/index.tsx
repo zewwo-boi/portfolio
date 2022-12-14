@@ -1,13 +1,23 @@
-import Header from "@/components/Common/Header";
-import Hero from "@/components/Sections/Index/Hero";
+import BlobsLayout from "@/components/Layouts/Blobs";
+import Layout from "@/components/Layouts/Header";
+import Hero from "@/components/Sections/Hero";
 
 // TODO: Add responsive ui for mobile
 
-export default function Home() {
+function Home() {
     return (
         <>
-            <Header />
             <Hero />
         </>
     );
 }
+
+Home.getLayout = function getLayout(page) {
+    return (
+        <BlobsLayout>
+            <Layout>{page}</Layout>
+        </BlobsLayout>
+    );
+};
+
+export default Home;
