@@ -7,7 +7,7 @@ specifiers:
   '@emotion/styled': ^11.10.0
   '@headlessui/react': ^1.6.5
   '@mui/icons-material': ^5.10.2
-  '@mui/material': ^5.0.0
+  '@mui/material': ^5.10.2
   '@next/bundle-analyzer': ^12.3.1
   '@svgr/webpack': ^6.3.1
   '@types/node': ^18.0.0
@@ -2267,7 +2267,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.0
-      caniuse-lite: 1.0.30001358
+      caniuse-lite: 1.0.30001434
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -2380,7 +2380,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001358
+      caniuse-lite: 1.0.30001434
       electron-to-chromium: 1.4.167
       node-releases: 2.0.5
       update-browserslist-db: 1.0.3_browserslist@4.21.0
@@ -2390,7 +2390,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001382
+      caniuse-lite: 1.0.30001434
       electron-to-chromium: 1.4.228
       node-releases: 2.0.6
       update-browserslist-db: 1.0.5_browserslist@4.21.3
@@ -2424,12 +2424,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /caniuse-lite/1.0.30001358:
-    resolution: {integrity: sha512-hvp8PSRymk85R20bsDra7ZTCpSVGN/PAz9pSAjPSjKC+rNmnUk5vCRgJwiTT/O4feQ/yu/drvZYpKxxhbFuChw==}
-
-  /caniuse-lite/1.0.30001382:
-    resolution: {integrity: sha512-2rtJwDmSZ716Pxm1wCtbPvHtbDWAreTPxXbkc5RkKglow3Ig/4GNGazDI9/BVnXbG/wnv6r3B5FEbkfg9OcTGg==}
-    dev: true
+  /caniuse-lite/1.0.30001434:
+    resolution: {integrity: sha512-aOBHrLmTQw//WFa2rcF1If9fa3ypkC1wzqqiKHgfdrXTWcU8C4gKVZT77eQAPWN1APys3+uQ0Df07rKauXGEYA==}
 
   /chalk/2.4.2:
     resolution: {integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==}
@@ -3718,7 +3714,7 @@ packages:
         optional: true
     dependencies:
       '@next/env': 12.1.6
-      caniuse-lite: 1.0.30001358
+      caniuse-lite: 1.0.30001434
       postcss: 8.4.5
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0

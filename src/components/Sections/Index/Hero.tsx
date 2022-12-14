@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import { AnimationOptions, motion } from "framer-motion";
+import Image from "next/image";
 import Blob1 from "/public/images/blobs/1.svg";
 import Blob2 from "/public/images/blobs/2.svg";
 import Blob3 from "/public/images/blobs/3.svg";
@@ -29,6 +30,16 @@ const blob = css({
     position: "absolute",
     height: "480px",
     width: "480px",
+});
+
+const go_next = css({
+    position: "absolute",
+    top: "50%",
+    transform: "translateY(-50%)",
+});
+
+const clamp = css({
+    marginTop: "clamp(12rem, 16rem, 20rem)",
 });
 
 function Hero() {
@@ -77,16 +88,20 @@ function Hero() {
                         <span>👋</span> <span>Hello! I go by the name of &quot;zewwo&quot;</span>
                     </motion.span>
                     <motion.span
-                        className="mt-16 block text-[4vw] sm:mt-12 sm:text-lg md:mt-12 md:text-2xl"
+                        className="block text-[4vw] sm:mt-12 sm:text-lg md:mt-12 md:text-2xl"
                         transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
                         initial={{ y: "-20%", opacity: 0 }}
-                        animate={{ y: "-100%", opacity: 1 }}>
+                        animate={{ y: "-100%", opacity: 1 }}
+                        css={clamp}>
                         <span className="hidden select-none text-3xl opacity-0 sm:inline md:text-4xl">
                             &nbsp;&nbsp; &nbsp; &nbsp;
                         </span>
                         I am a self-taught web-developer located in Seoul.
                     </motion.span>
                 </p>
+            </div>
+            <div css={go_next} className="go_next absolute right-16 h-12 w-12 text-white">
+                <Image src="/images/right_arrow.svg" alt="Go next" layout="fill" />
             </div>
         </div>
     );
