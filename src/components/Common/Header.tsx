@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Emoji from "../Party/Emoji";
 
 // TODO: Add an animated selected link indicator

@@ -33,7 +33,7 @@ function About({ route }) {
 
     return (
         <section css={about} className="about">
-            <div className="introduction absolute top-[50vh] left-1/2 w-auto -translate-x-1/2 -translate-y-1/2">
+            <section className="introduction absolute top-[50vh] left-1/2 w-auto -translate-x-1/2 -translate-y-1/2">
                 <p className="text-left">
                     <AnimatePresence mode="sync">
                         {visible &&
@@ -59,7 +59,8 @@ function About({ route }) {
                             })}
                     </AnimatePresence>
                 </p>
-            </div>
+            </section>
+            <section className="content"></section>
         </section>
     );
 }

@@ -33,7 +33,7 @@ function Home({ route }) {
 
     return (
         <section css={hero} className="hero">
-            <div className="introduction relative top-[40vh] w-auto md:top-[53vh] md:-translate-y-1/2">
+            <section className="introduction relative top-[40vh] w-auto md:top-[53vh] md:-translate-y-1/2">
                 <p className="text-left">
                     <AnimatePresence mode="sync">
                         {visible && (
@@ -73,7 +73,7 @@ function Home({ route }) {
                         )}
                     </AnimatePresence>
                 </p>
-            </div>
+            </section>
         </section>
     );
 }
