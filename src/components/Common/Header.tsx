@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 import Emoji from "../Party/Emoji";
 
 // TODO: Add an animated selected link indicator
 
-export default function Header() {
+export default function Header({ route, setRoute }) {
+    // TODO: Add animation to title Hero.tsx component
+
     return (
         <motion.header
             transition={{ delay: 1, duration: 1.2, ease: "easeOut" }}
@@ -16,13 +17,17 @@ export default function Header() {
                 <div className="emoji_lock relative flex h-full w-full items-center justify-center">
                     <Emoji />
                 </div>
-                <Link href="/">
+                <a className="cursor-pointer" onClick={() => setRoute("/")}>
                     <Image src="/images/logo.svg" layout="fill" alt="My logo." />
-                </Link>
+                </a>
             </div>
             <div className="_nav mr-[25%] flex h-full w-1/2 items-center justify-evenly">
-                <Link href="/about">About</Link>
-                <Link href="/projects">Projects</Link>
+                <a className="cursor-pointer" onClick={() => setRoute("/about")}>
+                    About
+                </a>
+                <a className="cursor-pointer" onClick={() => setRoute("/projects")}>
+                    Projects
+                </a>
             </div>
         </motion.header>
     );

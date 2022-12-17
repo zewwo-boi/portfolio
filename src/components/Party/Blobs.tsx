@@ -25,7 +25,9 @@ function Blobs({ overflow_hidden }: Props) {
 
     return (
         <motion.div
-            className={`blobs absolute h-full w-full ${overflow_hidden ? "overflow-hidden" : ""}`}
+            className={`blobs absolute h-full w-full overflow-x-clip ${
+                overflow_hidden ? "overflow-hidden" : ""
+            }`}
             transition={{ delay: 0.8, duration: 0.8 }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}>

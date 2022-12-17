@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 const emojis = ["✨", "💖", "💯", "❤️‍🔥", "🔥", "🎉", "🎊", "🎁", "💎"];
 
-function FloatingEmoji({ emoji, ref }) {
+function FloatingEmoji({ emoji }) {
     const radius = 32;
 
     const [angle, setAngle] = useState(Math.random() * Math.PI * 2);
@@ -30,7 +30,6 @@ function FloatingEmoji({ emoji, ref }) {
                     repeatType: "reverse",
                 },
             }}
-            ref={ref}
             className="absolute m-auto">
             <motion.span
                 initial={{ opacity: 0 }}
@@ -61,7 +60,5 @@ export default function Emoji() {
         }, 5000);
     }, []);
 
-    useEffect(() => {}, [currentEmoji]);
-
-    return <FloatingEmoji emoji={currentEmoji} ref={span} key={new Date().getTime()} />;
+    return <FloatingEmoji emoji={currentEmoji} key={new Date().getTime()} />;
 }
