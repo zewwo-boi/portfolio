@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 const about = css({
     position: "relative",
     height: "300vh",
-    width: "100vw",
+    width: "100%",
     overflow: "hidden",
 });
 
