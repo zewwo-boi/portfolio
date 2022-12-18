@@ -1,12 +1,11 @@
 import BlobsLayout from "@/components/Layouts/Blobs";
 import Layout from "@/components/Layouts/Header";
 import { css } from "@emotion/react";
-import { AnimatePresence, motion } from "framer-motion";
-import Image from "next/image";
+import { AnimatePresence, motion, useInView } from "framer-motion";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-const about = css({
+const social = css({
     position: "relative",
     height: "300vh",
     width: "100vw",
@@ -15,31 +14,14 @@ const about = css({
 
 const content = css({
     position: "relative",
-    height: "calc(100% - 100vh)",
+    height: "calc(100% - 85vh)",
     width: "100%",
-    top: "130vh",
+    top: "115vh",
+    background: "#fffff00f",
 });
 
-const path = css({
-    position: "absolute",
-    width: "2px",
-    height: "calc(100% - 40vh)",
-    left: "11vw",
-});
-
-const diamond = css({
-    position: "absolute",
-    left: "-35px",
-    height: "72px",
-    width: "72px",
-});
-
-function TimelineObject() {
-    return <div></div>;
-}
-
-function About({ route }) {
-    const titleWords = "Who exactly am I?";
+function Social({ route }) {
+    const titleWords = "My collection of social";
 
     const [visible, setVisible] = useState(true);
     const router = useRouter();
@@ -47,14 +29,14 @@ function About({ route }) {
     useEffect(() => {
         let delay = 200;
 
-        if (route !== "/about") {
+        if (route !== "/social") {
             setVisible(false);
         } else {
             setVisible(true);
         }
 
         if (window.scrollY !== 0) {
-            // window.scrollTo(0, 0); // TODO: Re-toggle on production
+            window.scrollTo(0, 0);
             delay = 500;
         }
 
@@ -63,8 +45,11 @@ function About({ route }) {
         }, delay);
     }, [route]);
 
+    const ref = useRef(null);
+    const isInView = useInView(ref);
+
     return (
-        <section css={about} className="about">
+        <section css={social} className="social">
             <section className="introduction absolute top-[50vh] left-1/2 w-auto -translate-x-1/2 -translate-y-1/2">
                 <p className="text-left">
                     <AnimatePresence mode="sync">
@@ -92,39 +77,12 @@ function About({ route }) {
                     </AnimatePresence>
                 </p>
             </section>
-            <section className="content" css={content}>
-                <div className="_timeline">
-                    <div className="__path bg-slate-600" css={path}>
-                        <motion.div
-                            className="diamond_top -top-14"
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            transition={{ delay: 0.5 }}
-                            viewport={{ once: true }}
-                            css={diamond}>
-                            <Image src="/images/icon-diamond.png" fill={true} alt="Diamond shape" />
-                        </motion.div>
-                        <motion.div
-                            className="diamond_bottom -bottom-14"
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            transition={{ delay: 0.5 }}
-                            viewport={{ once: true }}
-                            css={diamond}>
-                            <Image src="/images/icon-diamond.png" fill={true} alt="Diamond shape" />
-                        </motion.div>
-                    </div>
-                    <div className="__timeline_objects">
-                        <TimelineObject />
-                    </div>
-                </div>
-                <div className="_main"></div>
-            </section>
+            <section className="content" css={content} ref={ref}></section>
         </section>
     );
 }
 
-About.getLayout = function getLayout(page) {
+Social.getLayout = function getLayout(page) {
     return (
         <BlobsLayout overflow_hidden={false}>
             <Layout>{page}</Layout>
@@ -132,4 +90,4 @@ About.getLayout = function getLayout(page) {
     );
 };
 
-export default About;
+export default Social;

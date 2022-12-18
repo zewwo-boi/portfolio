@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 // TODO: Add responsive ui for mobile
+// TODO: Refine the design of the app
 
 const hero = css({
     position: "relative",

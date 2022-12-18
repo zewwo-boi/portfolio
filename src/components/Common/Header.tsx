@@ -5,8 +5,6 @@ import Emoji from "../Party/Emoji";
 // TODO: Add an animated selected link indicator
 
 export default function Header({ route, setRoute }) {
-    // TODO: Add animation to title Hero.tsx component
-
     return (
         <motion.header
             transition={{ delay: 1, duration: 1.2, ease: "easeOut" }}
@@ -21,14 +19,14 @@ export default function Header({ route, setRoute }) {
                     <Image src="/images/logo.svg" layout="fill" alt="My logo." />
                 </a>
             </div>
-            <div className="_nav mr-[25%] flex h-full w-1/2 items-center justify-evenly">
+            <nav className="_nav mr-[25%] flex h-full w-1/2 items-center justify-evenly font-semibold">
                 <a className="cursor-pointer" onClick={() => setRoute("/about")}>
                     About
                 </a>
-                <a className="cursor-pointer" onClick={() => setRoute("/projects")}>
-                    Projects
+                <a className="cursor-pointer" onClick={() => setRoute("/social")}>
+                    Social
                 </a>
-            </div>
+            </nav>
         </motion.header>
     );
 }
