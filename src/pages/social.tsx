@@ -7,21 +7,13 @@ import { useEffect, useRef, useState } from "react";
 
 const social = css({
     position: "relative",
-    height: "300vh",
+    height: "100vh",
     width: "100%",
     overflow: "hidden",
 });
 
-const content = css({
-    position: "relative",
-    height: "calc(100% - 85vh)",
-    width: "100%",
-    top: "115vh",
-    background: "#fffff00f",
-});
-
 function Social({ route }) {
-    const titleWords = "My collection of social";
+    const titleWords = "My social media";
 
     const [visible, setVisible] = useState(true);
     const router = useRouter();
@@ -50,7 +42,7 @@ function Social({ route }) {
 
     return (
         <section css={social} className="social">
-            <section className="introduction absolute top-[50vh] left-1/2 w-auto -translate-x-1/2 -translate-y-1/2">
+            <section className="introduction absolute top-[25vh] left-1/2 w-auto -translate-x-1/2 -translate-y-1/2">
                 <p className="text-left">
                     <AnimatePresence mode="sync">
                         {visible &&
@@ -77,7 +69,6 @@ function Social({ route }) {
                     </AnimatePresence>
                 </p>
             </section>
-            <section className="content" css={content} ref={ref}></section>
         </section>
     );
 }

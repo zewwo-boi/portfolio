@@ -28,8 +28,9 @@ module.exports = {
             },
             borderColor: {
                 // Regular Border Color
-                primary: "rgb(255,255,255,0.2)",
-                primary_hover: "rgb(255,255,255,0.25)",
+                "primary": "rgb(255,255,255,0.2)",
+                "primary_hover": "rgb(255,255,255,0.25)",
+                "body-primary": "#13192e",
             },
         },
         fontFamily: {

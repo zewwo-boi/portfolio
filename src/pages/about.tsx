@@ -1,6 +1,7 @@
 import BlobsLayout from "@/components/Layouts/Blobs";
 import Layout from "@/components/Layouts/Header";
 import { css } from "@emotion/react";
+import ArrowDownwardRounded from "@mui/icons-material/ArrowDownwardRounded";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -8,7 +9,7 @@ import { useEffect, useState } from "react";
 
 const about = css({
     position: "relative",
-    height: "300vh",
+    height: "220vh",
     width: "100%",
     overflow: "hidden",
 });
@@ -20,11 +21,18 @@ const content = css({
     top: "130vh",
 });
 
-const path = css({
+const timeline = css({
     position: "absolute",
-    width: "2px",
+    width: "85vw",
     height: "calc(100% - 40vh)",
-    left: "11vw",
+    left: "7.5vw",
+});
+
+const path = css({
+    position: "relative",
+    width: "2px",
+    height: "100%",
+    left: "3.5vw",
 });
 
 const diamond = css({
@@ -34,12 +42,33 @@ const diamond = css({
     width: "72px",
 });
 
-function TimelineObject() {
-    return <div></div>;
+function TimelineObject({ text }) {
+    const timelineCircle = css({
+        position: "relative",
+        height: "16px",
+        width: "16px",
+        top: "24px",
+        left: "calc(3.5vw - 7px)",
+        borderRadius: "100px",
+    });
+
+    return (
+        <div className="mb-[2vh] h-[calc(25%_-_2vh)]">
+            <div className="border-4 border-body-primary bg-slate-600" css={timelineCircle}></div>
+            <motion.div
+                className="relative left-[calc(4.5vw_+_9px)] text-xl"
+                initial={{ x: "-1%", opacity: 0 }}
+                whileInView={{ x: "0%", opacity: 1 }}
+                transition={{ delay: 0.1, duration: 0.7 }}
+                viewport={{ once: true }}>
+                {text}
+            </motion.div>
+        </div>
+    );
 }
 
 function About({ route }) {
-    const titleWords = "Who exactly am I?";
+    const titleWords = "About me";
 
     const [visible, setVisible] = useState(true);
     const router = useRouter();
@@ -54,7 +83,7 @@ function About({ route }) {
         }
 
         if (window.scrollY !== 0) {
-            // window.scrollTo(0, 0); // TODO: Re-toggle on production
+            window.scrollTo(0, 0);
             delay = 500;
         }
 
@@ -92,8 +121,24 @@ function About({ route }) {
                     </AnimatePresence>
                 </p>
             </section>
+            <AnimatePresence>
+                {visible && false && (
+                    <motion.div
+                        className="absolute bottom-[calc(16px_+_120vh)] left-1/2 flex -translate-x-1/2 cursor-pointer flex-col items-center text-sm"
+                        whileHover={{ gap: "12px", transition: { duration: 0.2 } }}
+                        onHoverStart={(e) => {}}
+                        onHoverEnd={(e) => {}}
+                        initial={{ opacity: 0, gap: "8px" }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 1, duration: 1 }}
+                        exit={{ opacity: 0, transition: { delay: 0, duration: 0.2 } }}>
+                        Scroll Down
+                        <ArrowDownwardRounded className="block" />
+                    </motion.div>
+                )}
+            </AnimatePresence>
             <section className="content" css={content}>
-                <div className="_timeline">
+                <div className="_timeline" css={timeline}>
                     <div className="__path bg-slate-600" css={path}>
                         <motion.div
                             className="diamond_top -top-14"
@@ -114,8 +159,11 @@ function About({ route }) {
                             <Image src="/images/icon-diamond.png" fill={true} alt="Diamond shape" />
                         </motion.div>
                     </div>
-                    <div className="__timeline_objects">
-                        <TimelineObject />
+                    <div className="__timeline_objects relative -top-[90%] h-[90%]">
+                        <TimelineObject text="I am a young student passionate about learning new things" />
+                        <TimelineObject text="I am thinking of majoring in C.S. and physics" />
+                        <TimelineObject text="I am always working on creating and improving my projects" />
+                        <TimelineObject text="I am a procrastinator" />
                     </div>
                 </div>
                 <div className="_main"></div>
