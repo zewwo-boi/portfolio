@@ -163,7 +163,7 @@ function About({ route }) {
                         <TimelineObject text="I am a young student passionate about learning new things" />
                         <TimelineObject text="I am thinking of majoring in C.S. and physics" />
                         <TimelineObject text="I am always working on creating and improving my projects" />
-                        <TimelineObject text="I am a procrastinator" />
+                        <TimelineObject text="I am lazy" />
                     </div>
                 </div>
                 <div className="_main"></div>

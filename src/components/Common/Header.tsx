@@ -23,8 +23,8 @@ export default function Header({ route, setRoute }) {
                 <a className="cursor-pointer" onClick={() => setRoute("/about")}>
                     About
                 </a>
-                <a className="cursor-pointer" onClick={() => setRoute("/social")}>
-                    Social
+                <a className="cursor-pointer" onClick={() => setRoute("/gallery")}>
+                    Gallery
                 </a>
             </nav>
         </motion.header>

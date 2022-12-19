@@ -51,8 +51,7 @@ function Home({ route }) {
                                     key="lol">
                                     <span>👋</span>{" "}
                                     <span>
-                                        <strong>Hello!</strong> I go by the name of
-                                        &quot;zewwo&quot;
+                                        <strong>Hello!</strong> My name is Nathaniel
                                     </span>
                                 </motion.span>
                                 <motion.span
