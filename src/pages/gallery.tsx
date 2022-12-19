@@ -13,7 +13,17 @@ const gallery = css({
     overflow: "hidden",
 });
 
-const images = ["1", "3", "4", "5", "2"];
+const myLoader = ({ src, width, quality }) => {
+    return `https://images.unsplash.com/${src}&w=${width}&q=${quality || 75}`;
+};
+
+const images = [
+    "https://images.unsplash.com/photo-1670245363917-5b12dc9c0f57?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MXx8fGVufDB8fHx8&auto=format&fit=crop&w=700&q=60",
+    "https://images.unsplash.com/photo-1667722952889-6d17a37b36e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8Mnx8fGVufDB8fHx8&auto=format&fit=crop&w=700&q=60",
+    "https://images.unsplash.com/photo-1667722313656-c0c2d032db29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8M3x8fGVufDB8fHx8&auto=format&fit=crop&w=700&q=60",
+    "https://images.unsplash.com/photo-1667722961882-4280efeadf81?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NHx8fGVufDB8fHx8&auto=format&fit=crop&w=700&q=60",
+    "https://images.unsplash.com/photo-1667722379763-db88922ec941?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NXx8fGVufDB8fHx8&auto=format&fit=crop&w=700&q=60",
+];
 
 function Gallery({ route }) {
     const titleWords = "Gallery";
@@ -81,12 +91,13 @@ function Gallery({ route }) {
                                 transition={{ delay: i * 0.2 + 0.1, duration: 1 }}
                                 viewport={{ once: true }}>
                                 <Image
-                                    src={`/images/raster/${v}.jpg`}
+                                    src={`/images/raster/${i + 1}.jpg`}
                                     fill={true}
                                     style={{
                                         objectFit: "contain",
                                     }}
                                     alt="Image"
+                                    quality={30}
                                 />
                             </motion.div>
                         );
