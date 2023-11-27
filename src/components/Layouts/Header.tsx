@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import Header from "../Common/Header";
+import Header from "../common/Header";
 
 function HeaderLayout({ children }) {
-    const [route, setRoute] = useState("");
+    const [route, setRoute] = useState(""); // Universal state used for triggering animations
     const router = useRouter();
 
     useEffect(() => {

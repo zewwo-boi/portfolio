@@ -1,11 +1,13 @@
-import BlobsLayout from "@/components/Layouts/Blobs";
-import Layout from "@/components/Layouts/Header";
+import BlobsLayout from "@/components/layouts/Blobs";
+import Layout from "@/components/layouts/Header";
 import { css } from "@emotion/react";
 import ArrowDownwardRounded from "@mui/icons-material/ArrowDownwardRounded";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+
+// TODO: Replace about page
 
 const about = css({
     position: "relative",
@@ -84,7 +86,7 @@ function About({ route }) {
 
         if (window.scrollY !== 0) {
             window.scrollTo(0, 0);
-            delay = 500;
+            delay += 300;
         }
 
         setTimeout(() => {
@@ -94,7 +96,7 @@ function About({ route }) {
 
     return (
         <section css={about} className="about">
-            <section className="introduction absolute top-[50vh] left-1/2 w-auto -translate-x-1/2 -translate-y-1/2">
+            <section className="introduction absolute top-[55vh] left-1/2 w-auto -translate-x-1/2 -translate-y-1/2">
                 <p className="text-left">
                     <AnimatePresence mode="sync">
                         {visible &&

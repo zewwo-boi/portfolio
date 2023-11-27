@@ -1,5 +1,5 @@
-import BlobsLayout from "@/components/Layouts/Blobs";
-import Layout from "@/components/Layouts/Header";
+import BlobsLayout from "@/components/layouts/Blobs";
+import Layout from "@/components/layouts/Header";
 import { css } from "@emotion/react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
@@ -13,7 +13,7 @@ const gallery = css({
     overflow: "hidden",
 });
 
-const myLoader = ({ src, width, quality }) => {
+const load = ({ src, width, quality }) => {
     return `https://images.unsplash.com/${src}&w=${width}&q=${quality || 75}`;
 };
 
@@ -42,7 +42,7 @@ function Gallery({ route }) {
 
         if (window.scrollY !== 0) {
             window.scrollTo(0, 0);
-            delay = 500;
+            delay += 300;
         }
 
         setTimeout(() => {
@@ -54,7 +54,7 @@ function Gallery({ route }) {
         <section css={gallery} className="gallery">
             <section className="introduction absolute top-[50vh] left-1/2 w-auto -translate-x-1/2 -translate-y-1/2">
                 <p className="text-left">
-                    <AnimatePresence mode="sync">
+                    <AnimatePresence>
                         {visible &&
                             titleWords.split(" ").map((value, index) => {
                                 return (

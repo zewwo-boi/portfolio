@@ -1,15 +1,15 @@
-import Blobs from "../Party/Blobs";
+import Blobs from "../party/Blobs";
 
 interface Props {
     overflow_hidden?: boolean;
-    children;
+    children: React.ReactNode;
 }
 
-function BlobsLayout({ overflow_hidden, children }: Props) {
+function BlobsLayout({ overflow_hidden = true, children }: Props) {
     return (
         <>
             <Blobs overflow_hidden={overflow_hidden} />
-            <main>{children}</main>
+            <div>{children}</div>
         </>
     );
 }

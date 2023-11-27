@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import classnames from "classnames";
 import { AnimationOptions, motion } from "framer-motion";
 import Blob1 from "/public/images/blobs/1.svg";
 import Blob2 from "/public/images/blobs/2.svg";
@@ -14,20 +15,19 @@ interface Props {
     overflow_hidden?: boolean;
 }
 
-function Blobs({ overflow_hidden }: Props) {
+function Blobs({ overflow_hidden = true }: Props) {
     const settings: AnimationOptions<any> = {
         repeat: Infinity,
         repeatType: "reverse",
         ease: "easeInOut",
     };
 
-    if (overflow_hidden == null) overflow_hidden = true;
-
     return (
         <motion.div
-            className={`blobs absolute h-full w-full overflow-x-clip ${
-                overflow_hidden ? "overflow-hidden" : ""
-            }`}
+            className={classnames(
+                "blobs absolute h-full w-full overflow-x-clip",
+                overflow_hidden && "overflow-hidden"
+            )}
             transition={{ delay: 0.8, duration: 0.8 }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}>

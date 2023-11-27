@@ -1,5 +1,5 @@
-import BlobsLayout from "@/components/Layouts/Blobs";
-import Layout from "@/components/Layouts/Header";
+import BlobsLayout from "@/components/layouts/Blobs";
+import Layout from "@/components/layouts/Header";
 import { css } from "@emotion/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
@@ -36,7 +36,7 @@ function Home({ route }) {
         <section css={hero} className="hero">
             <section className="introduction relative top-[40vh] w-auto md:top-[53vh] md:-translate-y-1/2">
                 <p className="text-left">
-                    <AnimatePresence mode="sync">
+                    <AnimatePresence>
                         {visible && (
                             <>
                                 <motion.span
@@ -48,7 +48,7 @@ function Home({ route }) {
                                         transition: { duration: 0.2, ease: "easeInOut" },
                                     }}
                                     animate={{ y: "0%", opacity: 1 }}
-                                    key="lol">
+                                    key="intro">
                                     <span>👋</span>{" "}
                                     <span>
                                         <strong>Hello!</strong> My name is Nathaniel
@@ -63,18 +63,18 @@ function Home({ route }) {
                                         transition: { duration: 0.2, ease: "easeInOut" },
                                     }}
                                     animate={{ y: "-100%", opacity: 1 }}
-                                    key="lol2">
+                                    key="intro_1">
                                     <span className="hidden select-none text-3xl opacity-0 sm:inline md:text-4xl">
                                         &nbsp;&nbsp; &nbsp; &nbsp;
                                     </span>
-                                    I am a self-taught web-developer located in 🇰🇷
+                                    I am a self-taught developer located in 🇰🇷
                                 </motion.span>
                             </>
                         )}
                     </AnimatePresence>
                 </p>
             </section>
-            <AnimatePresence mode="sync">
+            <AnimatePresence>
                 {visible && (
                     <>
                         <motion.div
