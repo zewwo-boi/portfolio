@@ -16,7 +16,7 @@ export default function Error404() {
             <div className="error relative top-1/2 left-1/2 flex -translate-y-1/2 -translate-x-1/2 flex-col leading-loose">
                 <h1 className="text-6xl leading-snug tracking-wide">Error 404</h1>
                 <hr className="w-96" />
-                <h2 className="leading-[4]">Page not found.</h2>
+                <h2 className="leading-[4]">Page not found</h2>
             </div>
         </div>
     );

@@ -1,11 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 const colors = require("tailwindcss/colors");
 
-/**
- *
- *
- *
- */
+// TODO: Refine the color pallette
 
 module.exports = {
     content: ["./src/pages/**/*.{js,ts,jsx,tsx}", "./src/components/**/*.{js,ts,jsx,tsx}"],
@@ -32,8 +28,9 @@ module.exports = {
             },
             borderColor: {
                 // Regular Border Color
-                primary: "rgb(255,255,255,0.2)",
-                primary_hover: "rgb(255,255,255,0.25)",
+                "primary": "rgb(255,255,255,0.2)",
+                "primary_hover": "rgb(255,255,255,0.25)",
+                "body-primary": "#13192e",
             },
         },
         fontFamily: {

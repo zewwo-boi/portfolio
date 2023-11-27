@@ -1,5 +1,3 @@
-export default function Panel({children}) {
-	<div className="panel">
-					
-	</div>
+export default function Panel({ children }) {
+    <div className="panel"></div>;
 }
