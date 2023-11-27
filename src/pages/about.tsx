@@ -1,5 +1,5 @@
-import BlobsLayout from "@/components/layouts/Blobs";
-import Layout from "@/components/layouts/Header";
+import BlobsLayout from "@/components/Layouts/Blobs";
+import Layout from "@/components/Layouts/Header";
 import { css } from "@emotion/react";
 import ArrowDownwardRounded from "@mui/icons-material/ArrowDownwardRounded";
 import { AnimatePresence, motion } from "framer-motion";

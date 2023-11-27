@@ -1,4 +1,4 @@
-import Button from "../../components/common/Button";
+import Button from "../../components/Common/Button";
 
 export default function Website() {
     return (
