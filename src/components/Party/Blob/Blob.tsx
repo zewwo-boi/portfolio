@@ -15,15 +15,15 @@ function Blob({ fragment_shader, coord = new Vector3(0, 0, 0) }: Props) {
         return {
             u_time: { value: 0 },
             u_intensity: { value: 0.8 },
+            u_seed: { value: Math.random() * 1000 },
         };
     }, []);
-    const seed = Math.random() * 1000;
 
     useFrame((cb) => {
         const { clock } = cb;
 
         if (mesh.current) {
-            mesh.current.material.uniforms.u_time.value = 0.04 * clock.getElapsedTime() + seed;
+            mesh.current.material.uniforms.u_time.value = 0.04 * clock.getElapsedTime();
         }
     });
 
