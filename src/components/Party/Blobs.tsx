@@ -1,9 +1,7 @@
 import { css } from "@emotion/react";
 import classnames from "classnames";
 import { AnimationOptions, motion } from "framer-motion";
-import Blob1 from "/public/images/blobs/1.svg";
-import Blob2 from "/public/images/blobs/2.svg";
-import Blob3 from "/public/images/blobs/3.svg";
+import Image from "next/image";
 
 const blob = css({
     position: "absolute",
@@ -33,24 +31,24 @@ function Blobs({ overflow_hidden = true }: Props) {
             animate={{ opacity: 1 }}>
             <motion.div
                 css={blob}
-                className="blob_1 -top-32 -left-72"
+                className="blob_1 -left-72 -top-32"
                 transition={{ ...settings, duration: 8 }}
                 animate={{ x: 10, y: 10, z: -13 }}>
-                <Blob1 />
+                <Image src="/images/blobs/1.svg" alt="Blob" fill={true} />
             </motion.div>
             <motion.div
                 css={blob}
                 className="blob_2 -bottom-64 -left-24"
                 transition={{ ...settings, duration: 7 }}
                 animate={{ x: -10, y: -15, z: 15 }}>
-                <Blob2 />
+                <Image src="/images/blobs/2.svg" alt="Blob" fill={true} />
             </motion.div>
             <motion.div
                 css={blob}
                 className="blob_3 -right-48 -top-44 lg:right-[1vw] lg:top-0"
                 transition={{ ...settings, duration: 5 }}
                 animate={{ x: 15, y: 10, z: -18 }}>
-                <Blob3 />
+                <Image src="/images/blobs/3.svg" alt="Blob" fill={true} />
             </motion.div>
         </motion.div>
     );
