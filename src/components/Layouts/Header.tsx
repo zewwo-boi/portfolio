@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../Common/Header";
 
 function HeaderLayout({ children }) {
-    const [route, setRoute] = useState(""); // Universal state used for triggering animations
+    const [route, setRoute] = useState(""); // Global state used for triggering animations
     const router = useRouter();
 
     useEffect(() => {
