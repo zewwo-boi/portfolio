@@ -19,8 +19,6 @@ function Blob({ fragment_shader, coord = new Vector3(0, 0, 0) }: Props) {
     }, []);
     const seed = Math.random() * 1000;
 
-    console.log("reset");
-
     useFrame((cb) => {
         const { clock } = cb;
 
