@@ -1,4 +1,4 @@
-import Blobs from "../Party/Blobs";
+import Blobs from "../Party/Blob/Blobs";
 
 interface Props {
     overflow_hidden?: boolean;
