@@ -1,4 +1,4 @@
-const vertexShader = `
+const vertexShader = /* glsl */ `
 uniform float u_intensity;
 uniform float u_time;
 uniform float u_seed;

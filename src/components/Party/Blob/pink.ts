@@ -1,4 +1,4 @@
-const fragmentShaderPink = `
+const fragmentShaderPink = /* glsl */ `
 uniform float u_intensity;
 uniform float u_time;
 
