@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import fragmentShaderBlue from "@/components/Party/Blob/blue";
 import fragmentShaderPink from "@/components/Party/Blob/pink";
 import fragmentShaderYellow from "@/components/Party/Blob/yellow";
+import { Vector3 } from "three";
 
 const blob = css({
     position: "absolute",
@@ -20,6 +21,16 @@ interface Props {
 }
 
 export default function Blobs({ overflow_hidden = true }: Props) {
+    type Dpr = [min: number, max: number];
+    const canvasOptions = {
+        camera: {
+            position: new Vector3(0, 0, 8),
+        },
+        dpr: [1, 2] as Dpr,
+        flat: true,
+        linear: true,
+    };
+
     return (
         <motion.div
             transition={{ delay: 0.8, duration: 0.8 }}
@@ -30,17 +41,17 @@ export default function Blobs({ overflow_hidden = true }: Props) {
                 overflow_hidden && "overflow-hidden"
             )}>
             <div className="blob_1 -left-72 -top-32" css={blob}>
-                <Canvas camera={{ position: [0.0, 0.0, 8.0] }} dpr={[1, 2]} flat linear>
+                <Canvas {...canvasOptions}>
                     <Blob fragment_shader={fragmentShaderPink} />
                 </Canvas>
             </div>
             <div className="blob_2 -bottom-32 -left-24" css={blob}>
-                <Canvas camera={{ position: [0.0, 0.0, 8.0] }} dpr={[1, 2]} flat linear>
+                <Canvas {...canvasOptions}>
                     <Blob fragment_shader={fragmentShaderBlue} />
                 </Canvas>
             </div>
             <div className="blob_3 -right-48 -top-44 lg:right-[1vw] lg:top-0" css={blob}>
-                <Canvas camera={{ position: [0.0, 0.0, 8.0] }} dpr={[1, 2]} flat linear>
+                <Canvas {...canvasOptions}>
                     <Blob fragment_shader={fragmentShaderYellow} />
                 </Canvas>
             </div>
