@@ -8,13 +8,13 @@
             "@/components/*": ["src/components/*"],
             "@/pages/*": ["src/pages/*"],
             "@/styles/*": ["src/styles/*"],
-            "@/public/*": ["public/*"]
+            "@/public/*": ["public/*"],
+            "@/root/*": ["./*"]
         },
         "types": ["@emotion/core"],
         "allowJs": true,
         "skipLibCheck": true,
         "strict": false,
-        "jsx": "react-jsx",
         "jsxImportSource": "@emotion/react",
         "forceConsistentCasingInFileNames": true,
         "noEmit": true,
