@@ -1,15 +1,16 @@
 /* eslint-disable react/no-unknown-property */
-import vertexShader from "@/components/Party/Blob/vertexShader";
-import { useFrame } from "@react-three/fiber";
+import { MeshProps, useFrame } from "@react-three/fiber";
 import { useMemo, useRef } from "react";
-import { Mesh, Vector3 } from "three";
+import { Mesh } from "three";
+
+import vertexShader from "@/components/Party/Blob/vertexShader";
 
 interface Props {
     fragment_shader: string;
-    coord?: Vector3;
+    args?: Partial<MeshProps>;
 }
 
-function Blob({ fragment_shader, coord = new Vector3(0, 0, 0) }: Props) {
+function Blob({ fragment_shader, args }: Props) {
     const mesh = useRef<Mesh>();
     const uniforms = useMemo(() => {
         return {
@@ -28,7 +29,7 @@ function Blob({ fragment_shader, coord = new Vector3(0, 0, 0) }: Props) {
     });
 
     return (
-        <mesh ref={mesh} scale={1.5} position={coord}>
+        <mesh ref={mesh} scale={1.5} {...args}>
             <icosahedronGeometry args={[2, 20]} />
             <shaderMaterial
                 vertexShader={vertexShader}
