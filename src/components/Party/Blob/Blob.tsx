@@ -7,15 +7,16 @@ import vertexShader from "@/components/Party/Blob/vertexShader";
 
 interface Props {
     fragment_shader: string;
+    intensity?: number;
     args?: Partial<MeshProps>;
 }
 
-function Blob({ fragment_shader, args }: Props) {
+function Blob({ fragment_shader, intensity = 0.8, args }: Props) {
     const mesh = useRef<Mesh>();
     const uniforms = useMemo(() => {
         return {
             u_time: { value: 0 },
-            u_intensity: { value: 0.8 },
+            u_intensity: { value: intensity },
             u_seed: { value: Math.random() * 1000 },
         };
     }, []);
