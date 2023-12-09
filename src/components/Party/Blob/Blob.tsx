@@ -3,7 +3,7 @@ import { MeshProps, useFrame } from "@react-three/fiber";
 import { useMemo, useRef } from "react";
 import { Mesh } from "three";
 
-import vertexShader from "@/components/Party/Blob/vertexShader";
+import vertexShader from "@/components/Party/Blob/vertexShader.vert";
 
 interface Props {
     fragment_shader: string;
@@ -25,6 +25,7 @@ function Blob({ fragment_shader, intensity = 0.8, args }: Props) {
         const { clock } = cb;
 
         if (mesh.current) {
+            // @ts-expect-error
             mesh.current.material.uniforms.u_time.value = 0.04 * clock.getElapsedTime();
         }
     });

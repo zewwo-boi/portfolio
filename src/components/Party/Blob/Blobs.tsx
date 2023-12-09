@@ -5,9 +5,9 @@ import { Canvas } from "@react-three/fiber";
 import classnames from "classnames";
 import { motion } from "framer-motion";
 
-import fragmentShaderBlue from "@/components/Party/Blob/blue";
-import fragmentShaderPink from "@/components/Party/Blob/pink";
-import fragmentShaderYellow from "@/components/Party/Blob/yellow";
+import fragmentShaderBlue from "@/components/Party/Blob/blue.frag";
+import fragmentShaderPink from "@/components/Party/Blob/pink.frag";
+import fragmentShaderYellow from "@/components/Party/Blob/yellow.frag";
 import { Vector3 } from "three";
 
 const blob = css({
