@@ -1,7 +1,6 @@
 import BlobsLayout from "@/components/Layouts/Blobs";
 import Layout from "@/components/Layouts/Header";
 import { css } from "@emotion/react";
-import ArrowDownwardRounded from "@mui/icons-material/ArrowDownwardRounded";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -69,22 +68,6 @@ function About({ route }) {
                     </AnimatePresence>
                 </p>
             </section>
-            <AnimatePresence>
-                {visible && false && (
-                    <motion.div
-                        className="absolute bottom-[calc(16px_+_120vh)] left-1/2 flex -translate-x-1/2 cursor-pointer flex-col items-center text-sm"
-                        whileHover={{ gap: "12px", transition: { duration: 0.2 } }}
-                        onHoverStart={(e) => {}}
-                        onHoverEnd={(e) => {}}
-                        initial={{ opacity: 0, gap: "8px" }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 1, duration: 1 }}
-                        exit={{ opacity: 0, transition: { delay: 0, duration: 0.2 } }}>
-                        Scroll Down
-                        <ArrowDownwardRounded className="block" />
-                    </motion.div>
-                )}
-            </AnimatePresence>
         </section>
     );
 }
