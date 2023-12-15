@@ -36,6 +36,7 @@ export default function Blobs({ overflow_hidden = true }: Props) {
             transition={{ delay: 0.8, duration: 0.8 }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             className={classnames(
                 "blobs absolute h-full w-full overflow-x-clip",
                 overflow_hidden && "overflow-hidden"
