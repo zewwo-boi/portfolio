@@ -1,4 +1,6 @@
 import Disclaimer from "@/components/Common/Disclaimer";
+import BlobsLayout from "@/components/Layouts/Blobs";
+import Layout from "@/components/Layouts/Main";
 import { css } from "@emotion/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
@@ -78,9 +80,12 @@ function Home({ route }) {
     );
 }
 
-Home.layouts = {
-    blobs: true,
-    header: true,
+Home.getLayout = function getLayout(page) {
+    return (
+        <BlobsLayout>
+            <Layout>{page}</Layout>
+        </BlobsLayout>
+    );
 };
 
 export default Home;

@@ -2,12 +2,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import Header from "../Common/Header";
 
-interface Props {
-    children: React.JSX.Element;
-    visible?: boolean;
-}
-
-function MainLayout({ children, visible }: Props) {
+function MainLayout({ children }) {
     const [route, setRoute] = useState(""); // Global state used for triggering animations
     const router = useRouter();
 
@@ -19,7 +14,7 @@ function MainLayout({ children, visible }: Props) {
 
     return (
         <>
-            {visible && <Header route={route} setRoute={setRoute} />}
+            <Header route={route} setRoute={setRoute} />
             <main>{React.cloneElement(children, { route, setRoute })}</main>
         </>
     );

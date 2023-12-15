@@ -108,9 +108,12 @@ function Gallery({ route }) {
     );
 }
 
-Gallery.layouts = {
-	blobs: true,
-	header: true
-}
+Gallery.getLayout = function getLayout(page) {
+    return (
+        <BlobsLayout overflow_hidden={false}>
+            <Layout>{page}</Layout>
+        </BlobsLayout>
+    );
+};
 
 export default Gallery;
