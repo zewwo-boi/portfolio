@@ -1,6 +1,6 @@
 import Disclaimer from "@/components/Common/Disclaimer";
 import BlobsLayout from "@/components/Layouts/Blobs";
-import Layout from "@/components/Layouts/Header";
+import Layout from "@/components/Layouts/Main";
 import { css } from "@emotion/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";

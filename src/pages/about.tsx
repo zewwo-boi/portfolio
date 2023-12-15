@@ -1,22 +1,12 @@
-import BlobsLayout from "@/components/Layouts/Blobs";
-import Layout from "@/components/Layouts/Header";
-import { css } from "@emotion/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-// TODO: Replace about page
-
-const about = css({
-    position: "relative",
-    height: "100vh",
-    width: "100%",
-    overflow: "hidden",
-});
+import BlobsLayout from "@/components/Layouts/Blobs";
+import Layout from "@/components/Layouts/Main";
+import Parallax from "@/pages/about.parallax";
 
 function About({ route }) {
-    const titleWords = "About me";
-
     const [visible, setVisible] = useState(true);
     const router = useRouter();
 
@@ -40,41 +30,24 @@ function About({ route }) {
     }, [route]);
 
     return (
-        <section css={about} className="about">
-            <section className="introduction absolute left-1/2 top-[55vh] w-auto -translate-x-1/2 -translate-y-1/2">
-                <p className="text-left">
-                    <AnimatePresence mode="sync">
-                        {visible &&
-                            titleWords.split(" ").map((value, index) => {
-                                return (
-                                    <motion.span
-                                        className="text-[5vw] font-bold sm:text-3xl md:text-4xl"
-                                        transition={{
-                                            delay: index * 0.15 + 0.2,
-                                            duration: 1,
-                                            ease: "easeOut",
-                                        }}
-                                        initial={{ opacity: 0 }}
-                                        exit={{
-                                            opacity: 0,
-                                            transition: { duration: 0.2, ease: "easeInOut" },
-                                        }}
-                                        animate={{ opacity: 1 }}
-                                        key={value}>
-                                        {value}{" "}
-                                    </motion.span>
-                                );
-                            })}
-                    </AnimatePresence>
-                </p>
-            </section>
+        <section className="about">
+            <AnimatePresence mode="sync">
+                {visible && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}>
+                        <Parallax />
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section>
     );
 }
 
 About.getLayout = function getLayout(page) {
     return (
-        <BlobsLayout overflow_hidden={true}>
+        <BlobsLayout hidden={true}>
             <Layout>{page}</Layout>
         </BlobsLayout>
     );

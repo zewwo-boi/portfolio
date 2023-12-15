@@ -1,5 +1,5 @@
 import BlobsLayout from "@/components/Layouts/Blobs";
-import Layout from "@/components/Layouts/Header";
+import Layout from "@/components/Layouts/Main";
 import { css } from "@emotion/react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
@@ -52,7 +52,7 @@ function Gallery({ route }) {
 
     return (
         <section css={gallery} className="gallery">
-            <section className="introduction absolute top-[50vh] left-1/2 w-auto -translate-x-1/2 -translate-y-1/2">
+            <section className="introduction absolute left-1/2 top-[50vh] w-auto -translate-x-1/2 -translate-y-1/2">
                 <p className="text-left">
                     <AnimatePresence>
                         {visible &&
