@@ -6,6 +6,8 @@ import BlobsLayout from "@/components/Layouts/Blobs";
 import Layout from "@/components/Layouts/Main";
 import Parallax from "@/pages/about.parallax";
 
+// TODO: Smoother effects
+
 function About({ route }) {
     const [visible, setVisible] = useState(true);
     const router = useRouter();
