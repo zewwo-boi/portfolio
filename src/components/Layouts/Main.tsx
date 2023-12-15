@@ -2,13 +2,15 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import Header from "../Common/Header";
 
-function HeaderLayout({ children }) {
+function MainLayout({ children }) {
     const [route, setRoute] = useState(""); // Global state used for triggering animations
     const router = useRouter();
 
     useEffect(() => {
         setRoute(router.pathname);
     }, []);
+
+    useEffect(() => {}, [route]);
 
     return (
         <>
@@ -18,4 +20,4 @@ function HeaderLayout({ children }) {
     );
 }
 
-export default HeaderLayout;
+export default MainLayout;
