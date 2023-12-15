@@ -7,6 +7,7 @@ import Head from "next/head";
 import { StrictMode } from "react";
 
 function MyApp({ Component, pageProps, router }) {
+    // const getLayout = Component.getLayout || ((page) => page);
     const layouts = Component.layouts as Layouts;
 
     return (
@@ -19,6 +20,7 @@ function MyApp({ Component, pageProps, router }) {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             </Head>
             <StrictMode>
+                {/* {getLayout(<Component {...pageProps} key={router.asPath} />)} */}
                 <Render layouts={layouts}>
                     <Component />
                 </Render>
