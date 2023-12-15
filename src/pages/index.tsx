@@ -52,7 +52,7 @@ function Home({ route }) {
                                     key="intro">
                                     <span>👋</span>{" "}
                                     <span>
-                                        <strong>Hello!</strong> My name is Nathaniel
+                                        <strong>Hello!</strong> I'm zewwo
                                     </span>
                                 </motion.span>
                                 <motion.span
