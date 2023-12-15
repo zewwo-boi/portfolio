@@ -4,16 +4,18 @@ import Blobs from "../Party/Blob/Blobs";
 interface Props {
     overflow_hidden?: boolean;
     children: React.ReactNode;
+    /** @deprecated */
     hidden?: boolean;
+    visible?: boolean;
 }
 
-function BlobsLayout({ overflow_hidden = true, children, hidden = false }: Props) {
+function BlobsLayout({ overflow_hidden = true, children, hidden = false, visible = true }: Props) {
     return (
         <>
             <AnimatePresence>
-                {!hidden && <Blobs overflow_hidden={overflow_hidden} />}
+                {visible && <Blobs overflow_hidden={overflow_hidden} />}
             </AnimatePresence>
-            <div>{children}</div>
+            {children}
         </>
     );
 }

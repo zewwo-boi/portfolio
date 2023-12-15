@@ -2,8 +2,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-import BlobsLayout from "@/components/Layouts/Blobs";
-import Layout from "@/components/Layouts/Main";
 import Parallax from "@/pages/about.parallax";
 
 // TODO: Smoother effects
@@ -47,12 +45,9 @@ function About({ route }) {
     );
 }
 
-About.getLayout = function getLayout(page) {
-    return (
-        <BlobsLayout hidden={true}>
-            <Layout>{page}</Layout>
-        </BlobsLayout>
-    );
+About.layouts = {
+    blobs: false,
+    header: true,
 };
 
 export default About;

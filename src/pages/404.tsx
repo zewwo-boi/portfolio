@@ -21,3 +21,5 @@ export default function Error404() {
         </div>
     );
 }
+
+Error404.layouts = {}
