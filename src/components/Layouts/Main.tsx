@@ -1,21 +1,33 @@
-import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import Blobs from "@/components/Party/Blob/Blobs";
+import { AnimatePresence } from "framer-motion";
+import React, { useEffect } from "react";
 import Header from "../Common/Header";
 
-function MainLayout({ children }) {
-    const [route, setRoute] = useState(""); // Global state used for triggering animations
-    const router = useRouter();
+interface Props {
+    route: string;
+    setRoute: React.Dispatch<React.SetStateAction<string>>;
+    children: React.JSX.Element;
+    overflow_hidden: boolean;
+    blob_hidden: boolean;
+}
 
+function MainLayout({ children, blob_hidden = false, overflow_hidden = true, ...props }: Props) {
     useEffect(() => {
-        setRoute(router.pathname);
-    }, []);
-
-    useEffect(() => {}, [route]);
+        console.log("changed blobs", blob_hidden);
+    }, [blob_hidden]);
 
     return (
         <>
-            <Header route={route} setRoute={setRoute} />
-            <main>{React.cloneElement(children, { route, setRoute })}</main>
+            <Header route={props.route} setRoute={props.setRoute} />
+            <AnimatePresence>
+                {!blob_hidden && <Blobs overflow_hidden={overflow_hidden} />}
+            </AnimatePresence>
+            <main>
+                {React.cloneElement(children, {
+                    route: props.route,
+                    setRoute: props.setRoute,
+                })}
+            </main>
         </>
     );
 }

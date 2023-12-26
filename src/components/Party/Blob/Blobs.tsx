@@ -33,9 +33,9 @@ export default function Blobs({ overflow_hidden = true }: Props) {
 
     return (
         <motion.div
-            transition={{ delay: 0.8, duration: 0.8 }}
+            transition={{ duration: 0.8 }}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={{ opacity: 1, transition: { delay: 0.8 } }}
             exit={{ opacity: 0 }}
             className={classnames(
                 "blobs absolute h-full w-full overflow-x-clip",

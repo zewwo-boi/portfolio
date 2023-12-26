@@ -1,34 +1,16 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-import BlobsLayout from "@/components/Layouts/Blobs";
-import Layout from "@/components/Layouts/Main";
+import RouteNavigation from "@/components/Layouts/RouteNavigation";
 import Parallax from "@/pages/about.parallax";
 
 // TODO: Smoother effects
 
 function About({ route }) {
     const [visible, setVisible] = useState(true);
-    const router = useRouter();
 
     useEffect(() => {
-        let delay = 200;
-
-        if (route !== "/about") {
-            setVisible(false);
-        } else {
-            setVisible(true);
-        }
-
-        if (window.scrollY !== 0) {
-            window.scrollTo(0, 0);
-            delay += 300;
-        }
-
-        setTimeout(() => {
-            router.push(route);
-        }, delay);
+        setVisible(route === "/about");
     }, [route]);
 
     return (
@@ -48,11 +30,7 @@ function About({ route }) {
 }
 
 About.getLayout = function getLayout(page) {
-    return (
-        <BlobsLayout hidden={true}>
-            <Layout>{page}</Layout>
-        </BlobsLayout>
-    );
+    return <RouteNavigation>{page}</RouteNavigation>;
 };
 
 export default About;
