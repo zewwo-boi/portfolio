@@ -1,9 +1,7 @@
 import Disclaimer from "@/components/Common/Disclaimer";
-import BlobsLayout from "@/components/Layouts/Blobs";
-import Layout from "@/components/Layouts/Main";
+import RouteNavigation from "@/components/Layouts/RouteNavigation";
 import { css } from "@emotion/react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 // TODO: Add responsive ui for mobile
@@ -19,18 +17,9 @@ const hero = css({
 
 function Home({ route }) {
     const [visible, setVisible] = useState(true);
-    const router = useRouter();
 
     useEffect(() => {
-        if (route !== "/") {
-            setVisible(false);
-        } else {
-            setVisible(true);
-        }
-
-        setTimeout(() => {
-            router.push(route);
-        }, 200);
+        setVisible(route === "/");
     }, [route]);
 
     return (
@@ -75,17 +64,13 @@ function Home({ route }) {
                     </AnimatePresence>
                 </p>
             </section>
-            <Disclaimer visible />
+            <AnimatePresence>{visible && <Disclaimer />}</AnimatePresence>
         </section>
     );
 }
 
 Home.getLayout = function getLayout(page) {
-    return (
-        <BlobsLayout>
-            <Layout>{page}</Layout>
-        </BlobsLayout>
-    );
+    return <RouteNavigation>{page}</RouteNavigation>;
 };
 
 export default Home;

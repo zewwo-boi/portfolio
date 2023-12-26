@@ -1,9 +1,7 @@
-import BlobsLayout from "@/components/Layouts/Blobs";
-import Layout from "@/components/Layouts/Main";
+import RouteNavigation from "@/components/Layouts/RouteNavigation";
 import { css } from "@emotion/react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 const gallery = css({
@@ -27,27 +25,10 @@ const images = [
 
 function Gallery({ route }) {
     const titleWords = "Gallery";
-
     const [visible, setVisible] = useState(true);
-    const router = useRouter();
 
     useEffect(() => {
-        let delay = 200;
-
-        if (route !== "/gallery") {
-            setVisible(false);
-        } else {
-            setVisible(true);
-        }
-
-        if (window.scrollY !== 0) {
-            window.scrollTo(0, 0);
-            delay += 300;
-        }
-
-        setTimeout(() => {
-            router.push(route);
-        }, delay);
+        setVisible(route === "/gallery");
     }, [route]);
 
     return (
@@ -109,11 +90,7 @@ function Gallery({ route }) {
 }
 
 Gallery.getLayout = function getLayout(page) {
-    return (
-        <BlobsLayout overflow_hidden={false}>
-            <Layout>{page}</Layout>
-        </BlobsLayout>
-    );
+    return <RouteNavigation>{page}</RouteNavigation>;
 };
 
 export default Gallery;
