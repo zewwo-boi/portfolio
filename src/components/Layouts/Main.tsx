@@ -1,6 +1,6 @@
 import Blobs from "@/components/Party/Blob/Blobs";
 import { AnimatePresence } from "framer-motion";
-import React, { useEffect } from "react";
+import React from "react";
 import Header from "../Common/Header";
 
 interface Props {
@@ -12,10 +12,6 @@ interface Props {
 }
 
 function MainLayout({ children, blob_hidden = false, overflow_hidden = true, ...props }: Props) {
-    useEffect(() => {
-        console.log("changed blobs", blob_hidden);
-    }, [blob_hidden]);
-
     return (
         <>
             <Header route={props.route} setRoute={props.setRoute} />
