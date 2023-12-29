@@ -1,5 +1,3 @@
-/** @jsxImportSource @emotion/react */
-
 import "@/styles/globals.scss";
 import Head from "next/head";
 import { StrictMode } from "react";
