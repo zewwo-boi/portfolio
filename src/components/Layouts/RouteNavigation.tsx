@@ -30,10 +30,10 @@ function RouteNavigation({ children }) {
         let delay = 0;
         if (rendered.current) {
             delay = 200;
-            if (window.scrollY !== 0) {
-                window.scrollTo(0, 0);
-                delay += 300;
-            }
+            // if (window.scrollY !== 0) {
+            //     window.scrollTo({ top: 0, behavior: "smooth" });
+            //     delay += 300;
+            // }
         } else rendered.current = true;
 
         setTimeout(() => {
