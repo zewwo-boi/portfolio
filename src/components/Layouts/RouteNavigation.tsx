@@ -13,7 +13,7 @@ import { useEffect, useRef, useState } from "react";
 
 function RouteNavigation({ children }) {
     const router = useRouter();
-    const [route, setRoute] = useState("/"); // TODO: change to current path
+    const [route, setRoute] = useState(router.pathname);
     const [isDefined, setDefined] = useState(false);
     let rendered = useRef(false);
 
