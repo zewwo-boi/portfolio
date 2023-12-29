@@ -5,11 +5,12 @@
  * Simultaneously, the layouts are changed
  */
 
+import { useRouter } from "next/router";
+import { useEffect, useRef, useState } from "react";
+
 import MainLayout from "@/components/Layouts/Main";
 import { routes } from "@/utils/constants/routes";
 import { RouteOptions } from "@/utils/types/Routes";
-import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
 
 function RouteNavigation({ children }) {
     const router = useRouter();

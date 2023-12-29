@@ -1,6 +1,7 @@
-import Blobs from "@/components/Party/Blob/Blobs";
 import { AnimatePresence } from "framer-motion";
 import React from "react";
+
+import Blobs from "@/components/Party/Blob/Blobs";
 import Header from "../Common/Header";
 
 interface Props {

@@ -2,7 +2,6 @@
 import { MeshProps, useFrame } from "@react-three/fiber";
 import { motion } from "framer-motion-3d";
 import { useMemo, useRef } from "react";
-
 import vertexShader from "@/components/Party/Blob/vertexShader.vert";
 
 interface Props extends Partial<typeof motion.mesh.defaultProps> {

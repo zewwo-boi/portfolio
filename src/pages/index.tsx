@@ -1,9 +1,10 @@
-import Disclaimer from "@/components/Common/Disclaimer";
-import RouteNavigation from "@/components/Layouts/RouteNavigation";
-import DefaultProps from "@/utils/types/Props";
 import { css } from "@emotion/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
+
+import Disclaimer from "@/components/Common/Disclaimer";
+import RouteNavigation from "@/components/Layouts/RouteNavigation";
+import DefaultProps from "@/utils/types/Props";
 
 // TODO: Add responsive ui for mobile
 // TODO: Refine the design of the app

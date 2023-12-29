@@ -1,9 +1,10 @@
-import RouteNavigation from "@/components/Layouts/RouteNavigation";
-import DefaultProps from "@/utils/types/Props";
 import { css } from "@emotion/react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+
+import RouteNavigation from "@/components/Layouts/RouteNavigation";
+import DefaultProps from "@/utils/types/Props";
 
 const gallery = css({
     position: "relative",

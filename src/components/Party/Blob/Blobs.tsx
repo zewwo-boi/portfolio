@@ -1,14 +1,14 @@
 /* eslint-disable react/no-unknown-property */
-import Blob from "@/components/Party/Blob/Blob";
 import { css } from "@emotion/react";
 import { Canvas } from "@react-three/fiber";
 import classnames from "classnames";
 import { motion } from "framer-motion";
+import { Vector3 } from "three";
 
+import Blob from "@/components/Party/Blob/Blob";
 import fragmentShaderBlue from "@/components/Party/Blob/blue.frag";
 import fragmentShaderPink from "@/components/Party/Blob/pink.frag";
 import fragmentShaderYellow from "@/components/Party/Blob/yellow.frag";
-import { Vector3 } from "three";
 
 const blob = css({
     position: "absolute",
