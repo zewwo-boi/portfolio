@@ -1,5 +1,6 @@
 import Disclaimer from "@/components/Common/Disclaimer";
 import RouteNavigation from "@/components/Layouts/RouteNavigation";
+import DefaultProps from "@/utils/types/Props";
 import { css } from "@emotion/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
@@ -15,7 +16,7 @@ const hero = css({
     overflow: "hidden",
 });
 
-function Home({ route }) {
+function Home({ route }: DefaultProps) {
     const [visible, setVisible] = useState(true);
 
     useEffect(() => {

@@ -1,4 +1,5 @@
 import RouteNavigation from "@/components/Layouts/RouteNavigation";
+import DefaultProps from "@/utils/types/Props";
 import { css } from "@emotion/react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
@@ -23,7 +24,7 @@ const images = [
     "https://images.unsplash.com/photo-1667722379763-db88922ec941?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NXx8fGVufDB8fHx8&auto=format&fit=crop&w=700&q=60",
 ];
 
-function Gallery({ route }) {
+function Gallery({ route }: DefaultProps) {
     const titleWords = "Gallery";
     const [visible, setVisible] = useState(true);
 

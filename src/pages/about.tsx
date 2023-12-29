@@ -3,10 +3,11 @@ import { useEffect, useState } from "react";
 
 import RouteNavigation from "@/components/Layouts/RouteNavigation";
 import Parallax from "@/pages/about.parallax";
+import DefaultProps from "@/utils/types/Props";
 
 // TODO: Smoother effects
 
-function About({ route }) {
+function About({ route }: DefaultProps) {
     const [visible, setVisible] = useState(true);
 
     useEffect(() => {
