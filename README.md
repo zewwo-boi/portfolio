@@ -17,23 +17,15 @@ This project uses layouts, brought from [this](https://nextjs.org/docs/pages/bui
 
 ## Known Problems
 
-### Rerendering Layouts
-
-Because of the nature of React, removing or modifying layouts across pages requires a rerender. Hence, it is difficult to persist data and layouts across pages that have different layouts.
-
-The solution does not exist yet, but I am actively working on improving the codebase.
-
 ### Performance
 
 Turns out, Three.js dies when I add multiple canvases to the page.
-
 Research is further needed.
 
-### GSAP
+### WebGL Depth Write
 
-I attempted to implement GSAP instead of Framer Motion. However, since Next.js inevitably executes Javascript before rendering, GSAP could not precalculate the animation coefficients.
-
-No solution found (yet)
+Due to the way WebGL renders transparent objects, it sort of creates a "void" within the object.
+See more on [renderOrder](https://threejs.org/docs/#api/en/core/Object3D.renderOrder) and [depth writes](https://threejs.org/docs/#api/en/materials/Material.depthWrite)
 
 ## Features
 

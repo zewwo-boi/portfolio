@@ -2,6 +2,7 @@ import { useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import classNames from "classnames";
 import {
+    AnimatePresence,
     MotionValue,
     animate,
     motion,
@@ -11,7 +12,7 @@ import {
     useTransform,
 } from "framer-motion";
 import { motion as motion3d } from "framer-motion-3d";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Vector3 } from "three";
 import { GLTF } from "three-stdlib";
 
@@ -31,6 +32,8 @@ interface IObserve extends IScroll {
     first: boolean;
     second: boolean;
     third: boolean;
+    third1: boolean;
+    third2: boolean;
 }
 
 // ! Right handed coordinates
@@ -52,6 +55,7 @@ type GLTFResult = GLTF & {
         ["1A1A1A"]: THREE.MeshStandardMaterial;
     };
 };
+
 interface IPencilProps extends Partial<typeof motion3d.group.defaultProps> {
     opacity?: number;
 }
@@ -105,18 +109,91 @@ export function Pencil({ opacity = 1, ...props }: IPencilProps) {
     );
 }
 
-function Objects({ ratioY, scrollY, ...observes }: IObserve) {
-    const PencilUnit = useTransform(scrollY, [3.5, 4.9], [0, 1]);
+type MathObject = GLTF & {
+    nodes: {
+        Cube: THREE.Mesh;
+        Cube001?: THREE.Mesh;
+        Cube002?: THREE.Mesh;
+    };
+    materials: {};
+};
+
+export function MathStuff({ opacity = 1, ...props }: IPencilProps) {
+    const { nodes: plusNodes } = useGLTF("/models/Plus.glb") as MathObject;
+    const { nodes: minusNodes } = useGLTF("/models/Minus.glb") as MathObject;
+    const { nodes: multiplyNodes } = useGLTF("/models/Multiply.glb") as MathObject;
+    const { nodes: divideNodes } = useGLTF("/models/Divide.glb") as MathObject;
+
+    return (
+        <motion3d.group {...props} dispose={null}>
+            <mesh
+                geometry={plusNodes.Cube.geometry}
+                material-transparent
+                material-opacity={opacity}
+                position={[2, 5, 0]}
+                scale={[1, 1, 0.1]}
+                rotation={[0, 0, -Math.PI]}
+            />
+            <mesh
+                geometry={minusNodes.Cube.geometry}
+                material-transparent
+                material-opacity={opacity}
+                position={[-5, -4, 0]}
+                scale={[0.3, 0.1, 1]}
+                rotation={[Math.PI / 2, Math.PI / 2, 0]}
+            />
+            <group position={[8, -5, 0]} rotation={[Math.PI / 2, 0, 0]}>
+                <mesh
+                    castShadow
+                    receiveShadow
+                    geometry={divideNodes.Cube.geometry}
+                    material-transparent
+                    material-opacity={opacity}
+                    scale={[1.1, 0.1, 0.3]}
+                />
+                <mesh
+                    castShadow
+                    receiveShadow
+                    geometry={divideNodes.Cube001.geometry}
+                    material-transparent
+                    material-opacity={opacity}
+                    position={[0, 0, 0.8]}
+                    scale={[0.3, 0.1, 0.3]}
+                />
+                <mesh
+                    castShadow
+                    receiveShadow
+                    geometry={divideNodes.Cube002.geometry}
+                    material-transparent
+                    material-opacity={opacity}
+                    position={[0, 0, -0.8]}
+                    scale={[0.3, 0.1, 0.3]}
+                />
+            </group>
+            <mesh
+                geometry={multiplyNodes.Cube.geometry}
+                material-transparent
+                material-opacity={opacity}
+                rotation={[Math.PI / 2, Math.PI / 4, 0]}
+                scale={[1, 0.1, 1]}
+                position={[-4, 5, 0]}
+            />
+        </motion3d.group>
+    );
+}
+
+function Objects({ ratioY, scrollY, ...observes }: Partial<IObserve>) {
+    const PencilUnit = useTransform(scrollY, [3.6, 5.6], [0, 1]);
     const [PencilOpacity, setPencilOpacity] = useState(0);
-    const rendered = useRef(false);
+
+    const MathUnit = useTransform(scrollY, [5.6, 7], [0, 1]);
+    const [MathOpacity, setMathOpacity] = useState(0);
 
     useEffect(() => {
-        if (!rendered.current) {
-            rendered.current = true;
+        if ((observes.third1 && PencilOpacity == 1) || (!observes.third1 && PencilOpacity == 0))
             return;
-        }
 
-        if (observes.third) {
+        if (observes.third1) {
             animate(0, 1, {
                 onUpdate: (val) => setPencilOpacity(val),
                 duration: 1,
@@ -127,9 +204,23 @@ function Objects({ ratioY, scrollY, ...observes }: IObserve) {
                 duration: 1,
             });
         }
+    }, [observes.third1]);
 
-        console.log(observes.third);
-    }, [observes.third]);
+    useEffect(() => {
+        if ((observes.third2 && MathOpacity == 1) || (!observes.third2 && MathOpacity == 0)) return;
+
+        if (observes.third2) {
+            animate(0, 1, {
+                onUpdate: (val) => setMathOpacity(val),
+                duration: 1,
+            });
+        } else {
+            animate(1, 0, {
+                onUpdate: (val) => setMathOpacity(val),
+                duration: 1,
+            });
+        }
+    }, [observes.third2]);
 
     return (
         <>
@@ -156,15 +247,21 @@ function Objects({ ratioY, scrollY, ...observes }: IObserve) {
                 scale={0.2}
                 opacity={PencilOpacity}
             />
+            <MathStuff name="4" opacity={MathOpacity} position={[0, 0, -12]} />
         </>
     );
 }
 
+/**
+ * {section}[subsection (optional)]
+ * eg. first1, first
+ */
 function Elements({ ratioY, scrollY }: IScroll) {
     const [first, setFirst] = useState(false);
     const [second, setSecond] = useState(false);
     const [third, setThird] = useState(false);
     const [third1, setThird1] = useState(false);
+    const [third2, setThird2] = useState(false);
 
     useEffect(() => {
         if (ratioY <= 0.6) setFirst(true);
@@ -173,11 +270,14 @@ function Elements({ ratioY, scrollY }: IScroll) {
         if (1.0 <= ratioY && ratioY <= 2.6) setSecond(true);
         else setSecond(false);
 
-        if (3.6 <= ratioY && ratioY <= 5) setThird(true);
+        if (3.6 <= ratioY && ratioY <= 7) setThird(true);
         else setThird(false);
 
-        if (5.6 <= ratioY) setThird1(true);
+        if (3.6 <= ratioY && ratioY <= 5.6) setThird1(true);
         else setThird1(false);
+
+        if (5.6 <= ratioY && ratioY <= 7) setThird2(true);
+        else setThird2(false);
     }, [ratioY]);
 
     return (
@@ -190,7 +290,8 @@ function Elements({ ratioY, scrollY }: IScroll) {
                         scrollY={scrollY}
                         first={first}
                         second={second}
-                        third={third}
+                        third1={third1}
+                        third2={third2}
                     />
                 </Canvas>
             </div>
@@ -223,17 +324,31 @@ function Elements({ ratioY, scrollY }: IScroll) {
                 <motion.div
                     className={classNames(
                         `fixed bottom-[30vh] left-1/2 -translate-x-1/2 text-center text-4xl font-bold`,
-                        (3.2 >= ratioY || ratioY >= 7) && "hidden"
+                        (3.2 >= ratioY || ratioY >= 7.4) && "hidden"
                     )}
                     initial={{ opacity: 0 }}
                     animate={third ? { opacity: 1 } : {}}>
                     <motion.div>I am a</motion.div>
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={third ? { opacity: 1 } : {}}
-                        transition={{ delay: 1 }}>
-                        student
-                    </motion.div>
+                    <AnimatePresence mode="wait">
+                        {third1 && (
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1, transition: { delay: 1 } }}
+                                exit={{ opacity: 0 }}
+                                key="student">
+                                student
+                            </motion.div>
+                        )}
+                        {third2 && (
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                key="thinker">
+                                thinker
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </motion.div>
             </section>
         </>
