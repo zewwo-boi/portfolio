@@ -1,8 +1,15 @@
 import "@/styles/globals.scss";
+import { AppProps } from "next/app";
 import Head from "next/head";
-import { StrictMode } from "react";
+import { ReactElement, StrictMode } from "react";
 
-function MyApp({ Component, pageProps, router }) {
+type Props = AppProps & {
+    Component: {
+        getLayout: (page: ReactElement) => ReactElement;
+    };
+};
+
+function MyApp({ Component, pageProps, router }: Props) {
     const getLayout = Component.getLayout || ((page) => page);
 
     return (
