@@ -43,7 +43,7 @@ function Home({ route }: DefaultProps) {
                                     key="intro">
                                     <span>👋</span>{" "}
                                     <span>
-                                        <strong>Hello!</strong> I'm zewwo
+                                        <strong>Hello!</strong> I&apos;m zewwo
                                     </span>
                                 </motion.span>
                                 <motion.span
