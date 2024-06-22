@@ -27,6 +27,11 @@ Research is further needed.
 Due to the way WebGL renders transparent objects, it sort of creates a "void" within the object.
 See more on [renderOrder](https://threejs.org/docs/#api/en/core/Object3D.renderOrder) and [depth writes](https://threejs.org/docs/#api/en/materials/Material.depthWrite)
 
+### Malfunctioning Browser History Tree
+
+Since the website uses states for route changes, history operations like "Go Back" do not work properly.
+A theoretical fix would be to create a route hook.
+
 ## Features
 
 ### Blobs
